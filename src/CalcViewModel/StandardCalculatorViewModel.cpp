@@ -525,6 +525,7 @@ void StandardCalculatorViewModel::HandleUpdatedOperandData(Command cmdenum)
             length = m_selectedExpressionLastData->Length() + 1;
             if (length > 50)
             {
+                delete [] temp;
                 return;
             }
             for (; i < length; ++i)
@@ -546,6 +547,7 @@ void StandardCalculatorViewModel::HandleUpdatedOperandData(Command cmdenum)
     displayExpressionToken->Token = updatedData;
     IsOperandUpdatedUsingViewModel = true;
     displayExpressionToken->CommandIndex = commandIndex;
+    delete [] temp;
 }
 
 bool StandardCalculatorViewModel::IsOperator(Command cmdenum)
